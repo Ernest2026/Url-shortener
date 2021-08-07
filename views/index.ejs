@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+    <nav>
+      <div class="container">
+        <div class="nav-container">
+      <div aria-role="Logo container">
+        <img src="images/logo.svg" alt="Shortly logo" class="logo-img">
+      </div>
+
+        <input type="checkbox" name="" class="checkbox" id="checkbox" style="display: none;">
+            <label for="checkbox" class="menu">
+                <span class="menu-icon" aria-label="Menu icon"></span>
+            </label>
+
+      <div class="nav-list">
+        <div class="toleft">
+          <a href="">Features</a>
+        <a href="">Pricing</a>
+        <a href="">Resources</a>
+    </div>
+    <div class="toright">
+        <a href="">Login</a>
+      <button type="button">Sign Up</button>
+    </div>
+    </div>
+      </div>
+      </div>
+    </nav>
+
+    <section class="sec-1">
+      <div class="container">
+        <div class="flex">
+      <div class="left">
+        <h1>More than just shorter links</h1>
+
+        <p>Build your brand’s recognition and get detailed insights 
+          on how your links are performing.</p>
+        
+        <button>Get Started</button>
+      </div>
+
+      <div class="right">
+        <img src="/images/illustration-working.svg" alt="illustration working" class="illustration-img">
+      </div>
+      </div>
+    </div>
+      </section>
+
+      <!-- <main>
+        
+      </main> -->
+
+      <section class="sec-2">
+          <div class="container">
+            <div class="main">
+              <div class="container">
+                <form action="/formData" name="myForm" method="post" onsubmit="return validateForm()">
+                <div class="input-container">
+                  <div class="input-text">
+                    <input type="text" id="shortenInput" value="" name="longUrl" placeholder="Shorten a link here..." class="input-text">
+                    <p class="error-msg"></p>
+                  </div>
+                  <div class="input-button">
+                    <input type="submit" value="Shorten It" id="shortenIt">
+                  </div>
+                </div>
+              </form>
+              </div>
+              <input id="cb" type="text" class="hiddenInput" hidden>
+              
+              <div class="link-box">
+                <% for (let i = 0; i < data.length; i++) {%>
+                  <div class="shortened-container">
+                    <div class="short-link">
+                      <p class="long-url"><%= data[i].longUrl %></p>
+                    </div>
+                    <div class="short">
+                      <p class="short-url"><a href="/<%= data[i].shortUrl %>" target="_blank"><%= domainName + '/' + data[i].shortUrl %></a></p>
+                      <button type="button" class="cpy">Copy</button>
+                    </div>
+                  </div>
+                <% } %>
+    
+              <!-- <div class="shortened-container">
+                <div class="short-link">
+                  <p class="long-url">https://www.frontendmentor.io</p>
+                </div>
+                <div class="short">
+                  <p class="short-url"><a href="">https://rel.link/gob3x9</a></p>
+                  <button type="button" class="cpy">Copy</button>
+                </div>
+              </div> -->
+
+              <!-- <div class="shortened-container">
+                <div class="short-link">
+                  <p class="long-url">https://www.frontendmentor.io</p>
+                </div>
+                <div class="short">
+                  <p class="short-url"><a href="">https://rel.link/gob3a9</a>s</p>
+                  <button type="button" class="cpy">Copy</button>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="sec-heading">
+              <h2>Advanced Statistics</h2>
+            
+              <p>Track how your links are performing across the web with our 
+              advanced statistics dashboard.</p>
+            </div>
+
+            
+            <div class="center-line">
+              <hr/>
+            <div class="sec-item">
+              <div class="item">
+                <span class="icon-area"><img src="images/icon-brand-recognition.svg" alt="Brand recognition icon" class="item-img"></span>
+                <h3>Brand Recognition</h3>
+            
+              <p>Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.</p>
+              </div>
+            
+              <div class="item">
+                <span class="icon-area"><img src="images/icon-detailed-records.svg" alt="Detailed records icon" class="item-img"></span>
+
+                <h3>Detailed Records</h3>
+            
+              <p>Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.</p>
+              </div>
+            
+              <div class="item">
+                <span class="icon-area"><img src="images/icon-fully-customizable.svg" alt="Fully customizable icon" class="item-img"></span>
+
+                <h3>Fully Customizable</h3>
+            
+              <p>Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.</p>
+              </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section class="sec-3">
+        <div class="container">
+          <div class="sec-item">
+            <h2>Boost your links today</h2>
+            <button>Get Started</button>
+          </div>
+        
+      </section>
+  
+      <footer>
+        <div class="container">
+          <div class="footer">
+            <div class="footer-logo">
+              <img src="images/flogo.svg" alt="Shortly Logo" class="logo-img">
+            </div>
+
+            <div class="links">
+              <h4>Features</h4>
+
+              <a href="#">Link Shortening</a>
+              <a href="#">Branded Links</a>
+              <a href="#">Analytics</a>
+            </div>
+
+            <div class="links">
+              <h4>Resources</h4>
+
+              <a href="#">Blog</a>
+              <a href="#">Developers</a>
+              <a href="#">Support</a>
+            </div>
+
+            <div class="links">
+              <h4>Company</h4>
+
+              <a href="#">About</a>
+              <a href="#">Our Team</a>
+              <a href="#">Careers</a>
+              <a href="#">Contact</a>
+            </div>
+
+            <div class="sm-logo">
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-facebook-official"></i></a>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+
+      
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+
+  <script src="/javascripts/index.js"></script>
+</body>
+</html>
+

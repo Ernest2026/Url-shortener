@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --background: hsl(257, 27%, 26%);
+            --first-main-color:hsl(257, 7%, 63%);
+            --sec-main-color: hsl(0, 0%, 75%);
+            --third-main-color:  hsl(0, 0%, 100%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: sans-serif;
+        }
+        svg {
+            display: block;
+            margin: 2rem auto;
+            --val: 0.2s;
+            animation: svg-fill 1s ease 2.3s forwards;
+        }
+        div.err-container {
+            background: url(/images/desktop-error.png), var(--background);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div.err-msg {
+            text-align: center;
+            /* min-height: 15rem; */
+            width: 50rem;
+            
+        }
+        h2 {
+            font-size: 4rem;
+            line-height: 5rem;
+            -webkit-text-stroke: 3px var(--sec-main-color);
+            color: var(--first-main-color);
+            font-family:sans-serif;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        h1 {
+            font-size: 5rem;
+            line-height: 7rem;
+        }
+        span.err-404 {
+            display: inline-block;
+            position: relative;
+            background: var(--first-main-color);
+            background: -webkit-linear-gradient(to right, var(--sec-main-color), var(--first-main-color));
+            background: linear-gradient(to right, var(--sec-main-color), var(--first-main-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: 1s;
+        }
+        div.err-status {
+            opacity: 0;
+            background: var(--first-main-color);
+            background: -webkit-linear-gradient(to right, var(--sec-main-color), var(--first-main-color));
+            background: linear-gradient(to right, var(--sec-main-color), var(--first-main-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: visible 1s ease 2.4s forwards;
+            margin-bottom: 2rem;
+            cursor: default;
+        }
+        div.err-status:hover * span.err-404 {
+            transform: rotateY(-360deg) scale(1.2, 1.2);
+        }
+        a {
+            opacity: 0;
+            color: var(--sec-main-color);
+            animation: visible 1s ease 2.6s forwards;
+            font-size: 1.2rem;
+            text-decoration-line: underline;
+        }
+        #notFound path:nth-child(2) {
+            stroke-dasharray: 224.67764282226562px;
+            stroke-dashoffset: 224.67764282226562px;
+            animation: glitch .5s ease forwards;
+        }
+        #notFound path:nth-child(3) {
+            stroke-dasharray: 219.7701416015625px;
+            stroke-dashoffset: 219.7701416015625px;
+            animation: glitch .5s ease calc(var(--val) * 1) forwards;
+        }
+        #notFound path:nth-child(4) {
+            stroke-dasharray: 282.16387939453125px;
+            stroke-dashoffset: 282.16387939453125px;
+            animation: glitch .5s ease calc(var(--val) * 2) forwards;
+        }
+        #notFound path:nth-child(5) {
+            stroke-dasharray: 212.9257354736328px;
+            stroke-dashoffset: 212.9257354736328px;
+            animation: glitch .5s ease calc(var(--val) * 3) forwards;
+        }
+        #notFound path:nth-child(6) {
+            stroke-dasharray: 294.67633056640625px;
+            stroke-dashoffset: 294.67633056640625px;
+            animation: glitch .5s ease calc(var(--val) * 4) forwards;
+        }
+        #notFound path:nth-child(7) {
+            stroke-dasharray: 190.95269775390625px;
+            stroke-dashoffset: 190.95269775390625px;
+            animation: glitch .5s ease calc(var(--val) * 5) forwards;
+        }
+        #notFound path:nth-child(8) {
+            stroke-dasharray: 145.40834045410156px;
+            stroke-dashoffset: 145.40834045410156px;
+            animation: glitch .5s ease calc(var(--val) * 6) forwards;
+        }
+        #notFound path:nth-child(9) {
+            stroke-dasharray: 216.29095458984375px;
+            stroke-dashoffset: 216.29095458984375px;
+            animation: glitch .5s ease calc(var(--val) * 7) forwards;
+        }
+        #notFound path:nth-child(10) {
+            stroke-dasharray: 190.953857421875px;
+            stroke-dashoffset: 190.953857421875px;
+            animation: glitch .5s ease calc(var(--val) * 8) forwards;
+        }
+        #notFound path:nth-child(11) {
+            stroke-dasharray: 199.43768310546875px;
+            stroke-dashoffset: 199.43768310546875px;
+            animation: glitch .5s ease calc(var(--val) * 9) forwards;
+        }
+        #notFound path:nth-child(12) {
+            stroke-dasharray: 199.8376007080078px;
+            stroke-dashoffset: 199.8376007080078px;
+            animation: glitch .5s ease calc(var(--val) * 10) forwards;
+        }
+        #notFound path:nth-child(13) {
+            stroke-dasharray: 238.5090789794922px;
+            stroke-dashoffset: 238.5090789794922px;
+            animation: glitch .5s ease calc(var(--val) * 11) forwards;
+        }
+        @keyframes glitch {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes show {
+            to {
+                transform: translateX(20%);
+            }
+        }
+        @keyframes svg-fill {
+            to {
+                fill: var(--third-main-color);
+            }
+        }
+        @keyframes visible {
+            to {
+                opacity: 1;
+            }
+        }
+        @media only screen and (max-width: 60rem) {
+            svg {
+                display: none;
+                --val: 0s;
+            }
+            h2 {
+                display: block;
+                color: var(--third-main-color);
+            }
+            div.err-container {
+                background: url(/images/mobile-error.png), var(--background); 
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+            div.err-status, a {
+                opacity: 1;
+                animation: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="err-container <% if (error.status == 404) { %>status-404<% } %>">
+        <div class="err-msg">
+            <svg id="notFound" width="532" height="71" viewBox="0 0 532 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="0.571289" y="0.619141" width="532" height="70" fill="black">
+                <rect fill="white" x="0.571289" y="0.619141" width="532" height="70"/>
+                </mask>
+                <path d="M30.7012 18.6494C30.7012 16.029 30.0062 14.1605 28.6162 13.0439C27.249 11.9274 25.3236 11.3691 22.8398 11.3691H13.0303V26.2031H22.8398C25.3236 26.2031 27.249 25.5993 28.6162 24.3916C30.0062 23.1839 30.7012 21.2699 30.7012 18.6494ZM41.126 18.5811C41.126 24.5283 39.6221 28.7324 36.6143 31.1934C33.6064 33.6543 29.3112 34.8848 23.7285 34.8848H13.0303V53H2.57129V2.61914H24.5146C29.5732 2.61914 33.6064 3.91797 36.6143 6.51562C39.6221 9.11328 41.126 13.1351 41.126 18.5811Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M68.7773 34.8848C68.1621 35.2721 67.5355 35.5911 66.8975 35.8418C66.2822 36.0697 65.4277 36.2861 64.334 36.4912L62.1465 36.9014C60.0957 37.266 58.626 37.7103 57.7373 38.2344C56.2334 39.123 55.4814 40.5016 55.4814 42.3701C55.4814 44.0335 55.9372 45.2412 56.8486 45.9932C57.7829 46.7223 58.9108 47.0869 60.2324 47.0869C62.3288 47.0869 64.2542 46.4717 66.0088 45.2412C67.7861 44.0107 68.709 41.7663 68.7773 38.5078V34.8848ZM62.8643 30.3389C64.6644 30.111 65.9518 29.8262 66.7266 29.4844C68.1165 28.8919 68.8115 27.9691 68.8115 26.7158C68.8115 25.1891 68.276 24.141 67.2051 23.5713C66.1569 22.9788 64.6074 22.6826 62.5566 22.6826C60.2552 22.6826 58.626 23.2523 57.6689 24.3916C56.9854 25.2347 56.5296 26.374 56.3018 27.8096H46.9023C47.1074 24.5511 48.0189 21.8737 49.6367 19.7773C52.2116 16.4961 56.6322 14.8555 62.8984 14.8555C66.9772 14.8555 70.6003 15.6644 73.7676 17.2822C76.9349 18.9001 78.5186 21.9535 78.5186 26.4424V43.5322C78.5186 44.7171 78.5413 46.1527 78.5869 47.8389C78.6553 49.1149 78.849 49.9808 79.168 50.4365C79.487 50.8923 79.9655 51.2682 80.6035 51.5645V53H70.0078C69.7116 52.248 69.5065 51.5417 69.3926 50.8809C69.2786 50.2201 69.1875 49.4681 69.1191 48.625C67.7747 50.0833 66.2253 51.3252 64.4707 52.3506C62.3743 53.5583 60.0046 54.1621 57.3613 54.1621C53.9889 54.1621 51.1976 53.2051 48.9873 51.291C46.7998 49.3542 45.7061 46.6198 45.7061 43.0879C45.7061 38.5078 47.472 35.1924 51.0039 33.1416C52.9408 32.0251 55.7891 31.2275 59.5488 30.749L62.8643 30.3389Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M103.196 45.002C105.475 45.002 107.4 44.1475 108.973 42.4385C110.545 40.7067 111.331 37.9609 111.331 34.2012C111.331 30.6693 110.579 27.9805 109.075 26.1348C107.594 24.2891 105.6 23.3662 103.094 23.3662C99.6758 23.3662 97.3174 24.9727 96.0186 28.1855C95.335 29.8945 94.9932 32.0023 94.9932 34.5088C94.9932 36.6735 95.3577 38.599 96.0869 40.2852C97.4085 43.4297 99.7783 45.002 103.196 45.002ZM100.77 14.8555C102.638 14.8555 104.267 15.1403 105.657 15.71C108.027 16.6898 109.941 18.4899 111.399 21.1104V15.7441H120.867V51.0859C120.867 55.8939 120.058 59.5169 118.44 61.9551C115.66 66.1478 110.328 68.2441 102.444 68.2441C97.682 68.2441 93.7969 67.3099 90.7891 65.4414C87.7812 63.5729 86.1178 60.7816 85.7988 57.0674H96.3945C96.668 58.2067 97.1123 59.027 97.7275 59.5283C98.7757 60.417 100.542 60.8613 103.025 60.8613C106.535 60.8613 108.882 59.6878 110.066 57.3408C110.841 55.8369 111.229 53.3076 111.229 49.7529V47.3604C110.294 48.9554 109.292 50.1517 108.221 50.9492C106.284 52.4303 103.766 53.1709 100.667 53.1709C95.8818 53.1709 92.0537 51.4961 89.1826 48.1465C86.3343 44.7741 84.9102 40.2168 84.9102 34.4746C84.9102 28.9375 86.2887 24.2891 89.0459 20.5293C91.8031 16.7467 95.7109 14.8555 100.77 14.8555Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M144.69 22.7852C142.435 22.7852 140.68 23.4915 139.427 24.9043C138.196 26.3171 137.422 28.2311 137.103 30.6465H152.244C152.085 28.0716 151.299 26.1234 149.886 24.8018C148.496 23.4574 146.764 22.7852 144.69 22.7852ZM144.69 14.7529C147.789 14.7529 150.581 15.334 153.064 16.4961C155.548 17.6582 157.599 19.4925 159.217 21.999C160.675 24.2093 161.621 26.7728 162.054 29.6895C162.304 31.3984 162.407 33.8594 162.361 37.0723H136.863C137 40.8092 138.174 43.4297 140.384 44.9336C141.728 45.8678 143.346 46.335 145.237 46.335C147.243 46.335 148.872 45.7653 150.125 44.626C150.809 44.0107 151.412 43.1562 151.937 42.0625H161.883C161.632 44.2728 160.481 46.5173 158.431 48.7959C155.241 52.4189 150.774 54.2305 145.032 54.2305C140.293 54.2305 136.111 52.7038 132.488 49.6504C128.865 46.597 127.054 41.6296 127.054 34.748C127.054 28.2995 128.683 23.3548 131.941 19.9141C135.223 16.4733 139.472 14.7529 144.69 14.7529Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M189.056 2.61914H200.096L220.159 37.79V2.61914H229.969V53H219.441L198.865 17.2139V53H189.056V2.61914Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M255.74 46.1299C258.589 46.1299 260.776 45.1159 262.303 43.0879C263.829 41.0599 264.593 38.1774 264.593 34.4404C264.593 30.7035 263.829 27.8324 262.303 25.8271C260.776 23.7992 258.589 22.7852 255.74 22.7852C252.892 22.7852 250.693 23.7992 249.144 25.8271C247.617 27.8324 246.854 30.7035 246.854 34.4404C246.854 38.1774 247.617 41.0599 249.144 43.0879C250.693 45.1159 252.892 46.1299 255.74 46.1299ZM274.812 34.4404C274.812 39.9092 273.24 44.5918 270.096 48.4883C266.951 52.362 262.177 54.2988 255.774 54.2988C249.371 54.2988 244.598 52.362 241.453 48.4883C238.309 44.5918 236.736 39.9092 236.736 34.4404C236.736 29.0628 238.309 24.403 241.453 20.4609C244.598 16.5189 249.371 14.5479 255.774 14.5479C262.177 14.5479 266.951 16.5189 270.096 20.4609C273.24 24.403 274.812 29.0628 274.812 34.4404Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M277.991 23.0244V16.0859H283.187V5.69531H292.825V16.0859H298.875V23.0244H292.825V42.7119C292.825 44.2386 293.019 45.1956 293.406 45.583C293.794 45.9476 294.979 46.1299 296.961 46.1299C297.257 46.1299 297.565 46.1299 297.884 46.1299C298.226 46.1071 298.556 46.0843 298.875 46.0615V53.3418L294.261 53.5127C289.658 53.6722 286.513 52.8747 284.827 51.1201C283.733 50.0036 283.187 48.2832 283.187 45.959V23.0244H277.991Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M325.398 2.6875H361.116V11.54H335.857V23.127H357.972V31.877H335.857V53H325.398V2.6875Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M384.119 46.1299C386.967 46.1299 389.155 45.1159 390.682 43.0879C392.208 41.0599 392.972 38.1774 392.972 34.4404C392.972 30.7035 392.208 27.8324 390.682 25.8271C389.155 23.7992 386.967 22.7852 384.119 22.7852C381.271 22.7852 379.072 23.7992 377.522 25.8271C375.996 27.8324 375.232 30.7035 375.232 34.4404C375.232 38.1774 375.996 41.0599 377.522 43.0879C379.072 45.1159 381.271 46.1299 384.119 46.1299ZM403.191 34.4404C403.191 39.9092 401.619 44.5918 398.475 48.4883C395.33 52.362 390.556 54.2988 384.153 54.2988C377.75 54.2988 372.977 52.362 369.832 48.4883C366.688 44.5918 365.115 39.9092 365.115 34.4404C365.115 29.0628 366.688 24.403 369.832 20.4609C372.977 16.5189 377.75 14.5479 384.153 14.5479C390.556 14.5479 395.33 16.5189 398.475 20.4609C401.619 24.403 403.191 29.0628 403.191 34.4404Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M419.905 15.7441V38.2002C419.905 40.3193 420.156 41.9144 420.657 42.9854C421.546 44.8766 423.289 45.8223 425.887 45.8223C429.214 45.8223 431.492 44.4779 432.723 41.7891C433.361 40.3307 433.68 38.4053 433.68 36.0127V15.7441H443.558V53H434.09V47.7363C433.999 47.8503 433.771 48.1921 433.406 48.7617C433.042 49.3314 432.609 49.8327 432.107 50.2656C430.581 51.6328 429.1 52.5671 427.664 53.0684C426.251 53.5697 424.588 53.8203 422.674 53.8203C417.16 53.8203 413.445 51.8379 411.531 47.873C410.46 45.6855 409.925 42.4613 409.925 38.2002V15.7441H419.905Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M473.636 14.8555C477.487 14.8555 480.631 15.8695 483.069 17.8975C485.53 19.9027 486.761 23.2409 486.761 27.9121V53H476.78V30.3389C476.78 28.3792 476.518 26.8753 475.994 25.8271C475.037 23.9131 473.214 22.9561 470.525 22.9561C467.221 22.9561 464.954 24.3574 463.724 27.1602C463.086 28.6413 462.767 30.5326 462.767 32.834V53H453.06V15.8125H462.459V21.2471C463.712 19.333 464.897 17.9544 466.014 17.1113C468.019 15.6074 470.56 14.8555 473.636 14.8555Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                <path d="M509.524 14.8555C511.78 14.8555 513.785 15.3568 515.54 16.3594C517.295 17.3392 518.719 18.7064 519.812 20.4609V2.6875H529.69V53H520.223V47.8389C518.833 50.0492 517.249 51.6556 515.472 52.6582C513.694 53.6608 511.484 54.1621 508.841 54.1621C504.489 54.1621 500.82 52.4076 497.835 48.8984C494.873 45.3665 493.392 40.8434 493.392 35.3291C493.392 28.9717 494.85 23.9701 497.767 20.3242C500.706 16.6784 504.625 14.8555 509.524 14.8555ZM511.644 45.959C514.401 45.959 516.497 44.9336 517.933 42.8828C519.368 40.832 520.086 38.1774 520.086 34.9189C520.086 30.3617 518.935 27.1032 516.634 25.1436C515.221 23.9587 513.58 23.3662 511.712 23.3662C508.864 23.3662 506.767 24.4486 505.423 26.6133C504.101 28.7552 503.44 31.4212 503.44 34.6113C503.44 38.0521 504.113 40.8092 505.457 42.8828C506.824 44.9336 508.886 45.959 511.644 45.959Z" stroke="var(--sec-main-color)" stroke-width="2" mask="url(#path-1-outside-1)"/>
+                </svg>
+                <h2><% if (error.status == 404) { %>Page Not Found<% } else {%><%= error.message %><% } %></h2>
+            <div class="err-status"><h1><% if (error.status == 404) { %>4<span class="err-404">0</span>4<% } else {%><%= error.status %><% } %></h1></div>
+            <a href="/">Back to home &#8594;</a>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
