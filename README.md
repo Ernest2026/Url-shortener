@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Design](./public/design/desktop-design.jpg)
+![Design](./public/design/desktop-preview.jpg)
 
 ### Links
 
