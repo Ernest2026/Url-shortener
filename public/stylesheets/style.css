@@ -31,7 +31,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Pregular, sans-serif;
+  font-family: Pregular, Arial, Helvetica, sans-serif;
   transition: all .3s;
 }
 
@@ -59,7 +59,7 @@ button {
   padding: 1rem 2.5rem;
   border-radius: 3rem;
   font-size: 1.8rem;
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
   border: none;
   /* outline: none; */
 }
@@ -89,7 +89,7 @@ nav {
 .nav-container a {
   display: inline-block;
   color: var(--Grayish-Violet);
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   margin-right: 3rem;
 }
@@ -142,7 +142,8 @@ section.sec-1 .left h1 {
 
 section.sec-1 .left p {
   width: 80%;
-  margin-bottom: 4rem;
+  margin: 1rem 0 3rem 0;
+  line-height: 3rem;
   color: var(--Very-Dark-Blue);
 }
 
@@ -153,7 +154,7 @@ section.sec-1 .left p {
 input {
   padding: 2rem 4rem;
   font-size: 1.8rem;
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
   border-radius: 1rem;
   /* outline: none; */
   border: none;
@@ -246,6 +247,11 @@ section.sec-2 .error-msg {
   color: var(--Red);
   font-size: 1.5rem;
   font-style: italic;
+}
+
+section.sec-2 .link-box {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .sec-heading {
@@ -467,22 +473,22 @@ span.menu-icon {
 
 h1 {
   font-size: 6rem;
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
 }
 
 h2 {
   font-size: 4rem;
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
 }
 
 h3 {
   font-size: 2.5rem;
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
 }
 
 h4 {
   font-size: 1.8rem;
-  font-family: Pbold;
+  font-family: Pbold, Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -725,7 +731,7 @@ h4 {
 
   h2 {
       font-size: 3rem;
-      font-family: Pbold;
+      font-family: Pbold, Arial, Helvetica, sans-serif;
   }
 
   @media only screen and (min-width: 600px) {

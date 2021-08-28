@@ -1,37 +1,43 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
-var shortId = require('shortid');
 var url = require('url');
- 
-var c = [];
+var model = require('./db.js').model;
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', {'data' : c, url : req.url, domainName : req.headers.host})
+router.get('/', async (req, res, next) => {
+  var exportData = await model.find({}, function (err, result) {
+    if (err) throw err;
+  });
+  res.render('index', {'data' : exportData, domainName : req.headers.host })
 })
 
 /* Redirect link with shortId */
-router.get('/:name', function(req, res, next) {
-  if (c.filter(e => e.shortUrl === req.params.name).length > 0) {
-    for (let i = 0; i < 2; i++) {
-      if (req.params.name == c[i].shortUrl) {
-        res.redirect('http://' + c[i].longUrl);
-      }
-    }
-  } else {
+router.get('/:name', async function(req, res, next) {
+  var currentUrl = req.params.name;
+  
+  var check = await model.findOne({
+    shortUrl: currentUrl
+  });
+
+  if (!check) {
     next();
+  } else {
+    res.redirect('http://' + check.longUrl);
   }
 });
 
 /* Add new div containing the url */
-router.post('/formData', function(req, res, next) {
-  if (req.body.longUrl != "") {
-    var d = {longUrl : req.body.longUrl, shortUrl : shortId.generate()};
-    c.push(d);
-    res.redirect('/');
+router.post('/formData', async function(req, res, next) {
+  var me = await model.findOne({ longUrl: req.body.longUrl })
+  if (req.body.longUrl != "" && (!me)) {
+    var saveData = new model({
+      longUrl: req.body.longUrl
+    })
+    await saveData.save();
   }
-      
+
+  res.redirect('/');
 });
 
 

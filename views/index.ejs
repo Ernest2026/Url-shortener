@@ -65,6 +65,10 @@
     </div>
       </section>
 
+      <!-- <main>
+        
+      </main> -->
+
       <section class="sec-2">
           <div class="container">
             <div class="main">
@@ -84,19 +88,9 @@
               <input id="cb" type="text" class="hiddenInput" hidden>
               
               <div class="link-box">
-                <% for (let i = 0; i < data.length; i++) {%>
-                  <div class="shortened-container">
-                    <div class="short-link">
-                      <p class="long-url"><%= data[i].longUrl %></p>
-                    </div>
-                    <div class="short">
-                      <p class="short-url"><a href="/<%= data[i].shortUrl %>" target="_blank"><%= domainName + '/' + data[i].shortUrl %></a></p>
-                      <button type="button" class="cpy">Copy</button>
-                    </div>
-                  </div>
-                <% } %>
-    
-              <div class="sec-heading">
+              </div>
+
+            <div class="sec-heading">
               <h2>Advanced Statistics</h2>
             
               <p>Track how your links are performing across the web with our 
@@ -131,6 +125,7 @@
               </div>
               </div>
             </div>
+          </div>
           </div>
       </section>
 
@@ -185,6 +180,30 @@
         </div>
       </footer>
 
+      <script>
+        addList();
+
+        function addList() {
+          for (let i = 0; i < localStorage.length; i++) {
+            <% for (let d = 0; d < data.length; d++) { %>
+              if (localStorage[i] == '<%= data[d].longUrl %>') {
+                const shortContainer = document.createElement("div");
+              shortContainer.classList.add("shortened-container");
+              shortContainer.innerHTML = `
+                <div class="short-link">
+                    <p class="long-url"><%= data[d].longUrl %></p>
+                </div>
+                <div class="short">
+                    <p class="short-url"><a href="/<%= data[d].shortUrl %>" target="_blank"><%= domainName + '/' + data[d].shortUrl %></a></p>
+                    <button type="button" class="cpy">Copy</button>
+                </div>`;
+              document.querySelector(".link-box").appendChild(shortContainer);
+              }
+              <% } %>
+            }
+              
+          }
+      </script>
   <script src="/javascripts/index.js"></script>
 </body>
 </html>
