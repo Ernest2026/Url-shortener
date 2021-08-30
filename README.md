@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Url shortener](https://github.com/Ernest2026/Url-shortener)
-- Live Site URL: [Url shortener](https://vast-coast-57660.herokuapp.com/)
+- Live Site URL: [Url shortener](https://s-u-r-l.herokuapp.com/)
 
 ## My process
 
