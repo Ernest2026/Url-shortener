@@ -19,7 +19,7 @@ var schemaName = new schema({
   });
 
   var model = mongoose.model('Model', schemaName);
-mongoose.connect('mongodb://localhost:27017/urldb', {
+mongoose.connect('mongodb+srv://urlshortener:urlshortener@cluster0.zlpdd.mongodb.net/urldb?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
