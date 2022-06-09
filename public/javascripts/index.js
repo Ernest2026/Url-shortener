@@ -24,29 +24,29 @@ document.getElementById("urlform").addEventListener("submit", (e) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        !savedUrls
-          ? localStorage.setItem("urls", JSON.stringify([data]))
-          : !savedUrls.find((obj) => obj.shortUrl === data.shortUrl) &&
-            localStorage.setItem(
-              "urls",
-              JSON.stringify([...savedUrls, data])
-            ) &&
-            addLinks([data]);
+        if (!savedUrls) {
+          localStorage.setItem("urls", JSON.stringify([data]));
+          addLinks([data]);
+        } else if (!savedUrls.find((obj) => obj.longUrl === data.longUrl)) {
+          localStorage.setItem("urls", JSON.stringify([...savedUrls, data]));
+          addLinks([data]);
+        }
+        document.getElementById("shortenInput").value = "";
+        document.getElementById("shortenInput").style.border = "unset";
+        document
+          .querySelector(".input-text")
+          .style.setProperty("--ptext", "hsl(255, 11%, 22%)");
+        document.querySelector(".error-msg").innerText = "";
       });
-    document.getElementById("shortenInput").value = "";
-    document.getElementById("shortenInput").style.border = "unset";
-    document
-      .querySelector(".input-text")
-      .style.setProperty("--ptext", "hsl(255, 11%, 22%)");
-    document.querySelector(".error-msg").innerText = "";
   }
 });
 
 function addLinks(links) {
-  links.map((obj) => {
-    const shortContainer = document.createElement("div");
-    shortContainer.classList.add("shortened-container");
-    shortContainer.innerHTML = `
+  links &&
+    links.map((obj) => {
+      const shortContainer = document.createElement("div");
+      shortContainer.classList.add("shortened-container");
+      shortContainer.innerHTML = `
                 <div class="long-link">
                     <p class="long-url">${obj.longUrl}</p>
                 </div>
@@ -57,8 +57,8 @@ function addLinks(links) {
                   <button type="button" class="cpy">Copy</button>
                   </div>`;
 
-    document.querySelector(".link-box").appendChild(shortContainer);
-  });
+      document.querySelector(".link-box").appendChild(shortContainer);
+    });
 }
 
 addLinks(JSON.parse(localStorage.getItem("urls")));
