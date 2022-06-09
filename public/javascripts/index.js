@@ -27,9 +27,18 @@ document.getElementById("urlform").addEventListener("submit", (e) => {
         !savedUrls
           ? localStorage.setItem("urls", JSON.stringify([data]))
           : !savedUrls.find((obj) => obj.shortUrl === data.shortUrl) &&
-            localStorage.setItem("urls", JSON.stringify([...savedUrls, data]));
-        addLinks([data]);
+            localStorage.setItem(
+              "urls",
+              JSON.stringify([...savedUrls, data])
+            ) &&
+            addLinks([data]);
       });
+    document.getElementById("shortenInput").value = "";
+    document.getElementById("shortenInput").style.border = "unset";
+    document
+      .querySelector(".input-text")
+      .style.setProperty("--ptext", "hsl(255, 11%, 22%)");
+    document.querySelector(".error-msg").innerText = "";
   }
 });
 
