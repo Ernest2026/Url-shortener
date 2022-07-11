@@ -21,8 +21,13 @@ router.get("/:name", async function (req, res, next) {
 
   if (!check) {
     next();
+  } else if (
+    check.longUrl.indexOf("https://") !== 0 &&
+    check.longUrl.indexOf("http://") !== 0
+  ) {
+    res.redirect("https://" + check.longUrl);
   } else {
-    res.redirect("http://" + check.longUrl);
+    res.redirect(check.longUrl);
   }
 });
 
