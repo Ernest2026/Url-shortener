@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-var shortId = require("shortid");
 var schema = mongoose.Schema;
 
 var schemaName = new schema(
@@ -11,7 +10,6 @@ var schemaName = new schema(
     shortUrl: {
       type: String,
       required: true,
-      default: shortId.generate(),
     },
   },
   {

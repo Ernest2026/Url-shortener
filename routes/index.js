@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var shortId = require("shortid");
 var model = require("./db.js").model;
 
 /* GET home page. */
@@ -31,6 +32,7 @@ router.post("/shortenUrl", async function (req, res, next) {
   if (req.body.longUrl != "" && !url) {
     var saveData = new model({
       longUrl: req.body.longUrl,
+      shortUrl: shortId.generate(),
     });
     await saveData.save();
     res.json({ shortUrl: saveData.shortUrl, longUrl: saveData.longUrl });
